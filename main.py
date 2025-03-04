@@ -16,10 +16,6 @@ loader = PyPDFLoader(file_path)
 
 docs = loader.load()
 
-print(len(docs))
-print(docs[0].page_content[0:100])
-print(docs[0].metadata)
-
 llm = ChatOpenAI(model="gpt-4o")
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
@@ -44,7 +40,6 @@ prompt = ChatPromptTemplate.from_messages(
         ("human", "{input}"),
     ]
 )
-
 
 question_answer_chain = create_stuff_documents_chain(llm, prompt)
 rag_chain = create_retrieval_chain(retriever, question_answer_chain)
