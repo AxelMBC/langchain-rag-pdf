@@ -44,8 +44,6 @@ prompt = ChatPromptTemplate.from_messages(
 question_answer_chain = create_stuff_documents_chain(llm, prompt)
 rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 
-# results = rag_chain.invoke({"input": "What is the first lesson on Mastery?"})
-
 def format_rag_results(results):
     """
     Formats the RAG results with clear, readable output.
@@ -77,7 +75,6 @@ def format_rag_results(results):
     print("RAW DATA RESPONSE")
     print("=" * 50)
 
-# You can modify the existing code to use this formatter
 results = rag_chain.invoke({"input": "Dame un mantra para aceptar la parte tediosa y dificil de hacer algo grande, esos sacrificios que uno tiene que hacer... Ostinato Rigore"})
 format_rag_results(results)
 
