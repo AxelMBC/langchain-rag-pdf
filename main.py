@@ -11,7 +11,7 @@ import textwrap
 
 load_dotenv()
 
-file_path = "./example_data/Mastery-by-Robert-Greene.pdf"
+file_path = "./example_data/Meditations_Marcus_Aurelius.pdf"
 loader = PyPDFLoader(file_path)
 
 docs = loader.load()
@@ -74,9 +74,11 @@ def format_rag_results(results):
         print(textwrap.fill(doc.page_content[:300] + "...", width=70, initial_indent="    ", subsequent_indent="    "))
     
     print("\n" + "=" * 50)
+    print("RAW DATA RESPONSE")
+    print("=" * 50)
 
 # You can modify the existing code to use this formatter
-results = rag_chain.invoke({"input": "What are the main actionable and practical steps I can take to acheive mastery?"})
+results = rag_chain.invoke({"input": "Dame un mantra para aceptar la parte tediosa y dificil de hacer algo grande, esos sacrificios que uno tiene que hacer... Ostinato Rigore"})
 format_rag_results(results)
 
 print(results)
