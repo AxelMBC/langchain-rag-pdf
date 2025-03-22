@@ -11,12 +11,12 @@ import textwrap
 
 load_dotenv()
 
-file_path = "./example_data/Meditations_Marcus_Aurelius.pdf"
+file_path = "./example_data//classified/extracted_text.pdf"
 loader = PyPDFLoader(file_path)
 
 docs = loader.load()
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatOpenAI(model="o3-mini-2025-01-31")
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 splits = text_splitter.split_documents(docs)
@@ -75,7 +75,7 @@ def format_rag_results(results):
     print("RAW DATA RESPONSE")
     print("=" * 50)
 
-results = rag_chain.invoke({"input": "Dame un mantra para aceptar la parte tediosa y dificil de hacer algo grande, esos sacrificios que uno tiene que hacer... Ostinato Rigore"})
+results = rag_chain.invoke({"input": "Tell me in detail what this document is about? I want to know what was the conclussion of the experiment"})
 format_rag_results(results)
 
 print(results)
